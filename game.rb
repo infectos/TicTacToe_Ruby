@@ -12,13 +12,14 @@ class Game
 
   def turn(player)
     puts "#{player.name}, pick the cell"
-    pick = gets.chomp.to_i - 1
+    pick = gets.chomp
+    cell = pick.to_i-1
 
-    if @board.field[pick] == "X" || @board.field[pick] == "O"
+    if @board.field[cell] == "X" || @board.field[cell] == "O" || pick.length != 1 || !pick[/[1-9]/]
       puts "Invalid cell"
       self.turn(player)
     else
-    @board.field[pick] = player.mark
+    @board.field[cell] = player.mark
     @board.show
     end
   end
